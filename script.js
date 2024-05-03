@@ -45,6 +45,31 @@ const checkIN =  function (flightNum, passenger){
 }
 
    
-checkIN(flight, john);
-console.log(flight);
-console.log(john);
+// checkIN(flight, john);
+// console.log(flight);
+// console.log(john);
+
+
+//Is as same as doing ...
+// const flightNum = flight;
+// const passenger = john;
+//when we try to opy object like  john- we are only copying th refrence in the memory heap 
+//they point to the same object in the memory.
+// Passing a primitive type to a funtion is just the same as creating a copy outside of the function 
+//While we pass an object into a function is really just like copying an object(whatever we change in the copy will change in the original)
+
+//real-life function that can create issues in big code bases. 
+
+const newPassport = function(person){
+    person.passport = Math.trunc(Math.random() *
+     100000000);
+}
+
+newPassport(john); //when the person is manipulated- its reflected in john and when its passed into checked in function the passport is no longer the same.
+
+checkIN(flight, john); // with this we have 2 function manipulating the same object, that is creating a problem
+
+//2 terms that are used in programming when dealing with funtions: 
+//passing by value, -> JS only has this.
+//passing by reference-> JS DOES NOT HAVE passing by refrence
+//we can create passing a reference(the memory address of the object)= we pass a refrence to the function(value) , but we DO NOT PASS BY REFERENCE.
