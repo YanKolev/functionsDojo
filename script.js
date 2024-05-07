@@ -73,3 +73,45 @@ checkIN(flight, john); // with this we have 2 function manipulating the same obj
 //passing by value, -> JS only has this.
 //passing by reference-> JS DOES NOT HAVE passing by refrence
 //we can create passing a reference(the memory address of the object)= we pass a refrence to the function(value) , but we DO NOT PASS BY REFERENCE.
+
+
+//--------Functions accepting callback functions------
+
+//string transformation functions
+
+const oneWord = function(str){
+    return str.replace(/ /g, '').toLowerCase();
+}
+
+const upperFirstWord = function(str){
+    const [first, ...others]= str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ');
+}
+
+//higher-order function
+const transformer = function (str, fn){
+    console.log(`Original string: ${str}`);
+    console.log(`Transformed string: ${str}`);
+
+    console.log(`transformed by: ${fn.name}`);
+
+}
+
+transformer('JavaScript is the best!', upperFirstWord);// here we are only passing the function value itself> we are not calling the function
+
+transformer('Javascript is the best!', oneWord);
+//we are calling the transformer function and into that we are passing
+//the one word funtion(call-back function)
+
+//JS uses callbacks all the time 
+const high5 = function(){
+    console.log(':)')
+}
+document.body.addEventListener('click', high5)
+//high5- is hte call back function and the addeventlister is the high-order function
+
+['john', 'martha', 'adam'].forEach(high5);
+
+//The biggest advantage of call functions is that it makes easy to split our code into more re-usable and readable parts
+//2nd advantage- they allow us to make abstraction
+
