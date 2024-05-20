@@ -251,3 +251,36 @@ const addTaxRate = function(rate){
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(23));
+
+
+    // immediately invoked function expressions // 
+
+    // sometimes we need a javascript we need a function that is only executed once and then dissapears
+ // used for async-await
+
+ //regular function call, but with this you can call it couple of times
+
+ const runOnce = function (){
+    console.log('this will never run again');
+ }
+runOnce();
+
+// below is the example of IIFE- we can trick javascript by wrappin the whole function into parenthesis and then use empty parenthesis after it: 
+
+(function(){
+    console.log('This will never run again ')
+    const isPrivate = 23;
+})();
+//we now transformed the statement into an expression.
+
+console.log(isPrivate);
+
+//below is the the way to write it as an arrow function
+(()=>console.log('This will also never run again'))
+();
+
+//functions create scopes one scope does not have acccess to inner scope.
+// basically the global scope does not have access of anything that is inside of a scope.
+// therefore we say that all the data defined inside a scope is private(encapsulated)
+// its important to hide variables and scopes are good tool for doing this
+// In ES6 variables declared with let and const ->create their own scope inside a block.
