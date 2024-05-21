@@ -284,3 +284,32 @@ console.log(isPrivate);
 // therefore we say that all the data defined inside a scope is private(encapsulated)
 // its important to hide variables and scopes are good tool for doing this
 // In ES6 variables declared with let and const ->create their own scope inside a block.
+
+
+
+//---- Closures----
+
+// we do not create closures manually it happens automatically in ertain situations, below example
+
+const secureBooking = function(){
+    let passengerCount = 0;
+
+
+    return function(){
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    }
+}
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+// Closure->any function always has access to the variable enviourment of the execution context in which the function was created.
+// Closure is the variable enviourment attached to the function, exactly as it was at the time and place the function was created.
+//closure has priority over the scope chain, 
+
+console.dir(booker);
+//it will show scopes in the console. and at index 0 u can see the securebooking
+// double brackets means its internal property that its not accessible by code. 

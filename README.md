@@ -17,4 +17,10 @@ Higheer-order function is either a function that receives anothe function as an 
 first class function is just a feature that a programming language has or not-> all functions are values. 
 
 
+Closures: A closure is the closed-over variable enviourment of the execution context in which a function was created, even after execution context is gone.
 
+Closures gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a refrence to its outer scope, which preserves the scope chain throughout time.
+
+Closures makes sure that a function doesn't loose connection to the variables that existed at the functions's birth place. 
+
+A closure is like a backpack function that a function carries around whereever it goes. This backpack has all the variables that were present in the enviourment where the function was created. 
