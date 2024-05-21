@@ -313,3 +313,54 @@ booker();
 console.dir(booker);
 //it will show scopes in the console. and at index 0 u can see the securebooking
 // double brackets means its internal property that its not accessible by code. 
+
+
+//Example 1 
+
+let f;
+
+const g = function(){
+    const a =23;
+    f =function(){
+        console.log(a * 2);
+    }
+}
+
+const h = function(){
+    const b = 777;
+    f = function (){
+        console.log(b * 2);
+    }
+}
+
+
+g();
+f();
+
+//re-assigning f function
+h();
+f();
+//in the end F will be 46, and f was not even defined in the variable enviourment,
+//as we assign a function, enclosed the function and it was able to access the a variable.
+// the variable enviourment G is no longer there, a is in ''the backpack''
+console.dir(f);
+
+//Example 2 
+
+// timer
+
+const boardPassengers = function(n, wait){
+    const perGroup = n / 3 // the closure uses this first- closure has priority over the scope chain.
+
+    //this call back function was executed independently from board passenger, but it was still able to use n and perGroup/ closure is being created.
+    setTimeout(function() {
+        console.log(`We are now boarding all ${n} passengers`);
+        console.log(`There are 3 groups, each with ${perGroup} passengers`);
+    } , 1000);
+
+    console.log(`Will start boarding in ${wait} seconds`)
+    
+}
+
+const perGroup = 1000; //creating global variable so the clossure can use it 
+boardPassengers(100, 3)
